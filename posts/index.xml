@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Okal Otieno</title>
+    <link>https://okal.me/posts/</link>
+    <description>Recent content in Posts on Okal Otieno</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 13 Feb 2018 14:07:05 +0300</lastBuildDate>
+    
+	<atom:link href="https://okal.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adventures in Python Static Analysis</title>
+      <link>https://okal.me/posts/adventures-in-python-static-analysis/</link>
+      <pubDate>Tue, 13 Feb 2018 14:07:05 +0300</pubDate>
+      
+      <guid>https://okal.me/posts/adventures-in-python-static-analysis/</guid>
+      <description>I had an opportunity, in mid-2017, to work on tooling to weed out dead code from one of the codebases I work on at Jumo¹. We use an in-house framework for building USSD² applications, the main mode of interaction users have with our lending platform.
+There isn’t much of a FOSS USSD ecosystem, so the framework had to solve a lot of basic problems in novel ways. Some of the most interesting aspects of it have to do with session management - USSD being a stateless protocol without any widely adopted session management standards, and a metaclass³ based routing model.</description>
+    </item>
+    
+  </channel>
+</rss>
