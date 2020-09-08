@@ -7,7 +7,7 @@ draft: false
 Hi there. My name is Okal Otieno. I'm a software developer with product
 experience spanning financial services, data collection and visualisation,
 messaging, and EdTech. I've worked in roles ranging from hands-on development,
-architecture, and engineering management. Even the odd bit of UI/UX design in a
+and architecture, to engineering management. Even the odd bit of UI/UX design in a
 past life. I currently work as a Tech Lead at [JUMO](https://jumo.world), a financial
 services technology company.
 
