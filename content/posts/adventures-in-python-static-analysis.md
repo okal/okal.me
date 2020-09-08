@@ -14,7 +14,7 @@ This set of problems proved to be a headache for feature development, as modules
 
 Having had some prior experience building parsers in Python, this seemed as good a chance as any to exercise what little knowledge I had lingering from Compilers 101.
 
-Tool survey
+## Tool survey
 
 During an internship with Wezatele, one of the predecessor companies to Jumo, I had a chance to work on a pseudo-natural language driven SMS-based ordering system. I don’t know if it ever went into production, but it was some of the most technically fulfilling work I had done (and have done) up until now. The “pseudo” is important. It was actually just a constrained DSL allowing customers to place orders without access to an Internet connected device. This was a time before wide smartphone penetration in Kenya, so it was essential to target low tech devices.⁴ I still remember my prized Nokia N97, then, to my young mind, the pinnacle of technical refinement, before the infamous burning platform memo that presaged the downfall of Nokia. But I digress…
 
@@ -34,7 +34,7 @@ The approach I took boiled down, in essence, to
 
 This led to a great reduction in dead code, though some of the checks resulted in false positives. Our CI⁸ tool would flag any dead code with a broken build, allowing reviewers to add false positives to a whitelist to reduce noise.
 
-A quick primer
+## A quick primer
 
 Given the following code, loosely mimicking the USSD framework handler model, your task is to determine which handlers are no longer part of the user journey.
 
