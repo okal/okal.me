@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://okal.me/about/</link>
+      <pubDate>Tue, 08 Sep 2020 03:54:38 +0300</pubDate>
+      
+      <guid>https://okal.me/about/</guid>
+      <description>Hi there. My name is Okal Otieno. I&amp;rsquo;m a software developer with product experience spanning financial services, data collection and visualisation, messaging, and EdTech. I&amp;rsquo;ve worked in roles ranging from hands-on development, architecture, and engineering management. Even the odd bit of UI/UX design in a past life. I currently work as a Tech Lead at JUMO, a financial services technology company.
+This blog is a catalogue of the joys, frustrations, and - hopefully - brief moments of insight that come with my work.</description>
+    </item>
+    
+    <item>
       <title>Adventures in Python Static Analysis</title>
       <link>https://okal.me/posts/adventures-in-python-static-analysis/</link>
       <pubDate>Tue, 13 Feb 2018 14:07:05 +0300</pubDate>
