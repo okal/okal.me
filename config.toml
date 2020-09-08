@@ -5,3 +5,9 @@ theme = "noteworthy"
 
 [params]
 linkedin = "https://www.linkedin.com/in/okalotieno/"
+
+[[menu.main]]
+identifer = "about"
+name = "About"
+url = "/about/"
+weight = 1
