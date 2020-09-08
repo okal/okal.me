@@ -1,10 +1,11 @@
 baseURL = "https://okal.me"
 languageCode = "en-gb"
 title = "Okal Otieno"
-theme = "noteworthy"
+theme = "manis"
 
 [params]
 linkedin = "https://www.linkedin.com/in/okalotieno/"
+github = "https://www.linkedin.com/in/okalotieno/"
 
 [[menu.main]]
 identifer = "about"
