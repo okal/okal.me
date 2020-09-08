@@ -15,3 +15,4 @@ This blog is a catalogue of the joys, frustrations, and - hopefully - brief
 moments of insight that come with my work. I'll also share bits and pieces of
 my life and interests outside of work every so often. Thanks for reading!
 
+You can reach me at [okal@justokal.com](mailto:okal@justokal.com).
