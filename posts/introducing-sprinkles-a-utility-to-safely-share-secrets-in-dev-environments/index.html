@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.74.3" />
+		<title>Introducing Sprinkles, a Utility to Safely Share Secrets in Dev Environments - Okal Otieno</title>
+
+		<meta name="description" content="We&rsquo;ve all been there. Setting up your dev environment was meant to be a single command away. And yet, here you are, hours later, just on the cusp of victory, before it turns out that you&rsquo;re missing yet another API key. You know you probably shouldn&rsquo;t, but you DM your teammate, let&rsquo;s call her Fatima, asking her to please send you the credentials. You&rsquo;ll clean up after yourself, deleting the message as soon as you add the credentials to your environment configuration.">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="/about/">About</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Introducing Sprinkles, a Utility to Safely Share Secrets in Dev Environments</h1>
+	<h5>
+		
+		<time datetime="2020-09-08 04:31:15 &#43;0300 EAT">Sep 08, 2020</time>
+		<span class="no-print">
+			<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	<p>We&rsquo;ve all been there. Setting up your dev environment was meant to be a single
+command away. And yet, here you are, hours later, just on the cusp of victory,
+before it turns out that you&rsquo;re missing yet another API key. You know you
+probably shouldn&rsquo;t, but you DM your teammate, let&rsquo;s call her Fatima, asking
+her to please send you the credentials. You&rsquo;ll clean up after yourself,
+deleting the message as soon as you add the credentials to your environment
+configuration. But it still feels dirty. You have the nagging feeling that
+they&rsquo;re still lurking about somewhere in the ether, vulnerable to the next
+data breach. Sure, you know you should avoid sharing credentials to begin
+with. You know that, if you must, plain text is the worst possible way to
+go about it. You&rsquo;ve taken the 12 factor methodology to heart, so much so that
+even your local dev set ups are configurable using environment variables. But
+it&rsquo;s been a long day. You&rsquo;re tired, but you&rsquo;ll be careful.
+InfoSec will understand.</p>
+<p>I&rsquo;ve had to deal with different iterations of this problem more times than I&rsquo;d
+like in the course of my career. Well, really, it&rsquo;s two, maybe three,
+intertwined problems. You have a somewhat repeatable dev environment. This could
+be your package.json/package-lock.json combo, your docker-compose.yml, your
+pom.xml&hellip; you name it. But you want to have enough flexibility to allow
+everyone to customise their environments to their heart&rsquo;s content. So you have
+a .env file at the root, or an application-dev.properties file, ignored in
+your VCS config. You have a few different iterations of this file doing the rounds
+inside the team, full of implicit knowledge. You don&rsquo;t want it in VCS, since it
+might contain some sensitive info, but also because it&rsquo;s intended to allow for
+differences between set ups.</p>
+<p>Sprinkles is an attempt to solve both problems. It uses templates that you
+can safely track in VCS, eliminating the dependence on implicit knowledge, without
+the risk of accidentally exposing sensitive information.
+The secrets are stored in AWS Secrets Manager. This allows for them to be encrypted,
+and managed within your organisation&rsquo;s IAM policy constraints.
+The templates are defined in the commonly used Jinja templating language.</p>
+<p>Let me run you through a brief demo.</p>
+<p>To install sprinkles, run <code>pip install sprinkles-config</code>. Create a <code>.sprinklesrc</code> file
+in your project root, in TOML format.</p>
+<p><em>.sprinklesrc</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">secret</span>]
+<span style="color:#a6e22e">arn</span> = <span style="color:#e6db74">&#34;arn:aws:secretsmanager:&lt;region&gt;:&lt;account-id-number&gt;:secret:&lt;secret-name&gt;&#34;</span>
+
+[<span style="color:#a6e22e">files</span>]
+  [<span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">docker</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">env</span>]
+    <span style="color:#a6e22e">template</span> = <span style="color:#e6db74">&#34;.env.sprinkles&#34;</span>
+    <span style="color:#a6e22e">target</span> = <span style="color:#e6db74">&#34;.env&#34;</span>
+</code></pre></div><p><em>.gitignore</em></p>
+<pre><code class="language-gitignore" data-lang="gitignore">.env
+</code></pre><p><em>.env.sprinkles</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">THIRD_PARTY_API_ENDPOINT<span style="color:#f92672">=</span>https://example.com/api/v1
+THIRD_PARTY_API_KEY<span style="color:#f92672">={{</span>THIRD_PARTY_API_KEY<span style="color:#f92672">}}</span>
+</code></pre></div><p><code>THIRD_PARTY_API_KEY</code> is defined as a key in an AWS Secrets Manager secret, identified by the ARN set in
+<code>.sprinklesrc</code>.</p>
+<p>To initialise a functioning <code>.env</code> file, you simply need to run <code>sprinkles</code> in the project root containing
+<code>.sprinklesrc</code>.</p>
+<p>The templating system allows for arbitrary text-based config formats, so you can just as easily adapt
+it to <code>application.properties</code>, for instance. It enables the team to confidently share implicit
+configuration knowledge. A full dev set up is one more command, rather than 10 Slack messages,
+a Zoom call, and two existential crises away.</p>
+<p>For more details, please check out the PyPI page, here: <a href="https://pypi.org/project/sprinkles-config/">https://pypi.org/project/sprinkles-config/</a>.</p>
+
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="https://okal.me/posts/adventures-in-python-static-analysis/">
+		<img class="icon-text" src="/img/prev.svg"/>Adventures in Python Static Analysis</a>
+
+
+</nav>
+
+
+
+
+
+			<hr class="sep" />
+		</main>
+		<footer class="container no-print">
+			<div class="u-footer">
+				
+
+<a href="https://www.linkedin.com/in/okalotieno/"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
+
+
+<a href="https://okal.me/index.xml" target="_blank"><img class="icon-social" src="/img/feed.svg" alt="Feed"></a>
+
+				<p>
+					
+					Theme used: <a href="https://github.com/yursan9/manis-hugo-theme">Manis</a><br>
+					
+					
+					
+				</p>
+				
+				<a href="#brand">
+					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
+					<span>Back to Up</span>
+				</a>
+				
+			</div>
+		</footer>
+		
+	</body>
+</html>
+

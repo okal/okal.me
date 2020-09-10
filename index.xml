@@ -6,10 +6,19 @@
     <description>Recent content on Okal Otieno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 13 Feb 2018 14:07:05 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2020 04:31:15 +0300</lastBuildDate>
     
 	<atom:link href="https://okal.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introducing Sprinkles, a Utility to Safely Share Secrets in Dev Environments</title>
+      <link>https://okal.me/posts/introducing-sprinkles-a-utility-to-safely-share-secrets-in-dev-environments/</link>
+      <pubDate>Tue, 08 Sep 2020 04:31:15 +0300</pubDate>
+      
+      <guid>https://okal.me/posts/introducing-sprinkles-a-utility-to-safely-share-secrets-in-dev-environments/</guid>
+      <description>We&amp;rsquo;ve all been there. Setting up your dev environment was meant to be a single command away. And yet, here you are, hours later, just on the cusp of victory, before it turns out that you&amp;rsquo;re missing yet another API key. You know you probably shouldn&amp;rsquo;t, but you DM your teammate, let&amp;rsquo;s call her Fatima, asking her to please send you the credentials. You&amp;rsquo;ll clean up after yourself, deleting the message as soon as you add the credentials to your environment configuration.</description>
+    </item>
     
     <item>
       <title>About</title>

@@ -3,22 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://okal.me/posts/introducing-sprinkles-a-utility-to-safely-share-secrets-in-dev-environments/</loc>
+    <lastmod>2020-09-08T04:31:15+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://okal.me/</loc>
+    <lastmod>2020-09-08T04:31:15+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://okal.me/posts/</loc>
+    <lastmod>2020-09-08T04:31:15+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://okal.me/about/</loc>
     <lastmod>2020-09-08T03:54:38+03:00</lastmod>
   </url>
   
   <url>
     <loc>https://okal.me/posts/adventures-in-python-static-analysis/</loc>
-    <lastmod>2018-02-13T14:07:05+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://okal.me/</loc>
-    <lastmod>2018-02-13T14:07:05+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://okal.me/posts/</loc>
     <lastmod>2018-02-13T14:07:05+03:00</lastmod>
   </url>
   
