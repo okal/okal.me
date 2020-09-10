@@ -1,7 +1,7 @@
 ---
 title: "Introducing Sprinkles, a Utility to Safely Share Secrets in Dev Environments"
 date: 2020-09-08T04:31:15+03:00
-draft: true
+draft: false
 ---
 
 We've all been there. Setting up your dev environment was meant to be a single
